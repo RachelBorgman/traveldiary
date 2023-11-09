@@ -31,30 +31,28 @@ const ViewTrip = (props) => {
                 </ol>
             </nav>
             <div className='viewBox'>
-                <h2>{oneSingleTravel.location}</h2>
-                <div className='viewLabel'>
-                    <h3>Trip Location:</h3>
-                    <p>{oneSingleTravel.location}</p>
-                </div>
-                <h2>{oneSingleTravel.description}</h2>
-                <div className='viewLabel'>
-                    <h3>Trip Description:</h3>
-                    <p>{oneSingleTravel.description}</p>
-                </div>
-                <h2>{oneSingleTravel.startDate}</h2>
-                <div className='viewLabel'>
-                    <h3>Trip Start Date:</h3>
-                    <p>{oneSingleTravel.startDate}</p>
-                </div>
-                <h2>{oneSingleTravel.endDate}</h2>
-                <div className='viewLabel'>
-                    <h3>Trip End Date:</h3>
-                    <p>{oneSingleTravel.endDate}</p>
-                </div>
-                <h2>{oneSingleTravel.rating}</h2>
-                <div className='viewLabel'>
-                    <h3>Trip Rating:</h3>
-                    <p>{oneSingleTravel.rating}</p>
+                <h1>{oneSingleTravel.location}</h1>
+                <div>
+                    <h2>{oneSingleTravel.description}</h2>
+                    <div className='viewLabel'>
+                        <h3>Trip Description:</h3>
+                        <p>{oneSingleTravel.description}</p>
+                    </div>
+                    <h2>{new Date(oneSingleTravel.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h2>
+                    <div className='viewLabel'>
+                        <h3>Trip Start Date:</h3>
+                        <p>{new Date(oneSingleTravel.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
+                    </div>
+                    <h2>{new Date(oneSingleTravel.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h2>
+                    <div className='viewLabel'>
+                        <h3>Trip End Date:</h3>
+                        <p>{new Date(oneSingleTravel.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
+                    </div>
+                    <h2>{oneSingleTravel.rating}</h2>
+                    <div className='viewLabel'>
+                        <h3>Trip Rating:</h3>
+                        <p>{oneSingleTravel.rating}</p>
+                    </div>
                 </div>
                 {/* <h2>{oneSingleTravel.photos}</h2> */}
                 {/* <div className='viewLabel'>

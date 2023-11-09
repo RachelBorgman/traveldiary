@@ -60,10 +60,10 @@ const UpdateTrip = (props) => {
         <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item active" aria-current="page">Edit Chore</li>
-                    <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
-                    <li className="breadcrumb-item"><Link to={`/chores/add`}>Add Chore</Link></li>
-                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Edit Trip</li>
+                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add Trip</Link></li>
+                    {/* <li className="breadcrumb-item"><Link to={`/travel/find`}>Search</Link></li> */}
                 </ol>
             </nav>
             <h3 style={{color:'tomato'}}>Edit Trip: {tripL}</h3>
@@ -96,12 +96,12 @@ const UpdateTrip = (props) => {
                         <br></br>
                         <div>
                             <label  className="col-sm-2 col-form-label" htmlFor='startDate'>Start Date: </label>
-                            <input type="text"   className="form-control" name="startDate" value={tripSD} onChange={ (e) => setTripSD(e.target.value)}/>
+                            <input type="text"   className="form-control" name="startDate" value={new Date(tripSD).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} onChange={ (e) => setTripSD(e.target.value)}/>
                         </div>
                         <br></br>
                         <div>
                             <label  className="col-sm-2 col-form-label" htmlFor='endDate'>End Date: </label>
-                            <input type="text"   className="form-control" name="endDate" value={tripED} onChange={ (e) => setTripED(e.target.value)}/>
+                            <input type="text"   className="form-control" name="endDate" value={new Date(tripED).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} onChange={ (e) => setTripED(e.target.value)}/>
                         </div>
                         <br></br>
                         <div>

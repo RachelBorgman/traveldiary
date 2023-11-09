@@ -12,7 +12,11 @@ const TripListAll = (props) => {
             .then((res)=>{
                 console.log("THIS IS RES.DATA", res.data);
                 let tripsSorted = res.data;
-                tripsSorted = tripsSorted.sort((a,b) => a.location.localeCompare(b.location))
+                // tripsSorted = tripsSorted.sort((a,b) => a.location.localeCompare(b.location))
+                tripsSorted = tripsSorted.sort((a,b) => {
+                    return new Date(a.startDate).getTime() - 
+                        new Date(b.startDate).getTime()
+                }).reverse();
                 console.log("this is tripsSorted:", tripsSorted)
                 setTripList(tripsSorted);
                 })
@@ -56,8 +60,8 @@ const TripListAll = (props) => {
                                     <tr key={trip._id}>
                                         <td>{trip.location}</td>
                                         <td>{trip.description}</td>
-                                        <td>{trip.startDate}</td>
-                                        <td>{trip.endDate}</td>
+                                        <td>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</td>
+                                        <td>{new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</td>
                                         <td>{trip.rating}</td> 
                                         {/* <td>{trip.photos}</td>  */}
                                         <td>
