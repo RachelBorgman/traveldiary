@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import TripList from '../components/TripList';
+import AddTripForm from '../components/AddTrip';
+import ViewTrip from '../components/ViewTrip';
+import UpdateTrip from '../components/UpdateTrip';
 
 
 function Main() {
@@ -18,7 +22,7 @@ function Main() {
 
     const editStyle = {
         margin:'1rem',
-        color: 'teal'
+        color: 'blue'
     };
 
     const buttonStyle = {
@@ -28,7 +32,7 @@ function Main() {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/trips') //assuming this is the route
+        axios.get('http://localhost:8000/api/travel/all') //assuming this is the route
             .then(res => {
                 setTripList(res.data)
             })
@@ -36,7 +40,7 @@ function Main() {
         }, [])
 
     const removeFromDom = tripID => {
-        axios.delete("http://localhost:8000/api/trips/" + tripID) //assuming this is the route
+        axios.delete("http://localhost:8000/api/travel/" + tripID) //assuming this is the route
         .then((res)=>{
             console.log(res);
             console.log(res.data);
@@ -51,9 +55,9 @@ function Main() {
         <BrowserRouter>
             <Routes>
                 <Route element={<TripList buttonStyle={buttonStyle} tripList={tripList} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}/>} path="/" default />
-                <Route element={<AddTripForm   buttonStyle={buttonStyle} initialTripLocation="" initialTripDescription=""  initialTripStartDate=""  initialTripEndDate="" initialTripRating="" initialTripPhotos="" linkStyle={linkStyle} editStyle={editStyle} tripList={tripList} setTripList={setTripList} setErrors={setErrors} errors={errors}/>} path="/trips/add" />
-                <Route element={<ViewTrip buttonStyle={buttonStyle}/>} path="/trips/:id" />
-                <Route element={<UpdateTrip   buttonStyle={buttonStyle} tripList={tripList} linkStyle={linkStyle} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}  initialTripLocation="" initialTripDescription=""  initialTripStartDate=""  initialTripEndDate="" initialTripRating="" initialTripPhotos="" />} path="/trips/edit/:id" />
+                <Route element={<AddTripForm   buttonStyle={buttonStyle} initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating="" linkStyle={linkStyle} editStyle={editStyle} tripList={tripList} setTripList={setTripList} setErrors={setErrors} errors={errors}/>} path="/travel/create" />
+                <Route element={<ViewTrip buttonStyle={buttonStyle}/>} path="/travel/:id" />
+                <Route element={<UpdateTrip   buttonStyle={buttonStyle} tripList={tripList} linkStyle={linkStyle} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}   initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating=""  />} path="/travel/edit/:id" />
             </Routes>
         </BrowserRouter>
     </div>

@@ -8,14 +8,14 @@ const ViewTrip = (props) => {
     const {id} = useParams(); 
     const {buttonStyle} = props;
     const navigate = useNavigate();
-    const [oneTrip, setOneTrip] = useState({})
+    const [oneSingleTravel, setOneSingleTravel] = useState({})
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/trips/${id}`)
+        axios.get(`http://localhost:8000/api/travel/${id}`)
             .then( res => {
-                console.log(res.data);
-                setOneTrip(res.data);
-                navigate(`/trips/${id}`)
+                console.log("here is res.data:", res.data);
+                setOneSingleTravel(res.data);
+                navigate(`/travel/${id}`)
             })
             .catch( err => console.log(err) );
     }, []);
@@ -25,34 +25,43 @@ const ViewTrip = (props) => {
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item active" aria-current="page">View Trip</li>
-                    <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
-                    <li className="breadcrumb-item"><Link to={`/trips/add`}>Add A New Trip</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add A New Trip</Link></li>
                     {/* <li className="breadcrumb-item"><Link to={`/trips/find`}>Search</Link></li> */}
                 </ol>
             </nav>
-            <div className='formBox'>
-                <h2 className='tripTitle'>{oneTrip.tripLocation}</h2>
+            <div className='viewBox'>
+                <h2>{oneSingleTravel.location}</h2>
                 <div className='viewLabel'>
-                    <h3 className='viewTitle'>Trip Location:</h3>
-                    <p className='choreInfo'>{oneTrip.choreName}</p>
+                    <h3>Trip Location:</h3>
+                    <p>{oneSingleTravel.location}</p>
                 </div>
+                <h2>{oneSingleTravel.description}</h2>
                 <div className='viewLabel'>
-                    <h3 className='viewTitle'>Chore Description:</h3>
-                    <p className='choreInfo'>{oneTrip.choreDescription}</p>
+                    <h3>Trip Description:</h3>
+                    <p>{oneSingleTravel.description}</p>
                 </div>
+                <h2>{oneSingleTravel.startDate}</h2>
                 <div className='viewLabel'>
-                    <h3 className='viewTitle'>Chore Location: </h3>
-                    <p className='choreInfo'>{oneTrip.choreLocation}</p>
+                    <h3>Trip Start Date:</h3>
+                    <p>{oneSingleTravel.startDate}</p>
                 </div>
+                <h2>{oneSingleTravel.endDate}</h2>
                 <div className='viewLabel'>
-                    <h3 className='viewTitle'>Posted By: </h3>
-                    <p className='choreInfo'>{oneTrip.chorePostedBy}</p>
+                    <h3>Trip End Date:</h3>
+                    <p>{oneSingleTravel.endDate}</p>
                 </div>
+                <h2>{oneSingleTravel.rating}</h2>
                 <div className='viewLabel'>
-                    <h3 className='viewTitle'>Chore Responsibility: </h3>
-                    <p className='choreInfo'>{oneTrip.choreResponsibility}</p>
+                    <h3>Trip Rating:</h3>
+                    <p>{oneSingleTravel.rating}</p>
                 </div>
-                <Link to={`/trips/edit/${oneTrip._id}`}><Button style={buttonStyle}>Edit Trip Details</Button></Link>
+                {/* <h2>{oneSingleTravel.photos}</h2> */}
+                {/* <div className='viewLabel'>
+                    <h3>Trip Photos:</h3>
+                    <p>{oneSingleTravel.photos}</p>
+                </div> */}
+                <Link to={`/travel/edit/${oneSingleTravel._id}`}><Button style={buttonStyle}>Edit Trip Details</Button></Link>
             </div>
         </div>
     );

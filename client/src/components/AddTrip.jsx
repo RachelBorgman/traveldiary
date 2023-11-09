@@ -4,12 +4,13 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { Button } from '@mui/material'
 
 const AddTripForm = (props) => {
-    const {setTripList, tripList, initialTripLocation, initialTripDescription, initialChoreLocation, initialChorePostedBy, initialChoreResponsibility, buttonStyle, editStyle} = props;
-    const [tripLocation, setTripLocation] = useState(initialTripLocation);
-    const [tripDescription, setTripDescription] = useState(initialTripDescription);
-    const [choreLocation, setChoreLocation] = useState(initialChoreLocation);
-    const [chorePostedBy, setChorePostedBy] = useState(initialChorePostedBy);
-    const [choreResponsibility, setChoreResponsibility] = useState(initialChoreResponsibility);
+    const {setTripList, tripList, initialLocation, initialDescription, initialStartDate, initialEndDate, initialRating, initialPhotos, buttonStyle, editStyle} = props;
+    const [location, setLocation] = useState(initialLocation);
+    const [description, setDescription] = useState(initialDescription);
+    const [startDate, setStartDate] = useState(initialStartDate);
+    const [endDate, setEndDate] = useState(initialEndDate);
+    const [rating, setRating] = useState(initialRating);
+    const [photos, setPhotos] = useState(initialPhotos);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const {id} = useParams(); 
@@ -17,9 +18,9 @@ const AddTripForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/trips', ({tripLocation, tripDescription, choreLocation, chorePostedBy, choreResponsibility}))
+        axios.post('http://localhost:8000/api/travel/create', ({location, description, startDate, endDate, rating, photos}))
             .then(res => {
-                    console.log("THIS IS RES:", res);
+                console.log("THIS IS RES:", res);
                 console.log(res.data)
                 console.log("THIS IS res.data._id: ", res.data._id)
                 setTripList([...tripList, res.data])
@@ -29,15 +30,15 @@ const AddTripForm = (props) => {
                 })
             .catch((err)=> {
             console.log("this is the err:", err);
-            // console.log("this is the err.message:", err.message);
-            console.log("this is the err.response.data:", err.response.data); // error.response.data
-            const errorResponse = err.response.data.err.errors; // Get the errors from err.response.data
-                    const errorArr = []; // Define a temp error array to push the messages in
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
-                    }
-            setErrors(errorArr); //or errorResponse ??
-            // navigate("/")
+            // // console.log("this is the err.message:", err.message);
+            // console.log("this is the err.response:", err.response);
+            // const errorResponse = err.response.data; // Get the errors from err.response.data
+            //         const errorArr = []; // Define a temp error array to push the messages in
+            //         for (const key of Object.keys(errorResponse)) {
+            //             errorArr.push(errorResponse[key].message)
+            //         }
+            // setErrors(errorArr); //or errorResponse ??
+            // // navigate("/")
             })
         
             
@@ -47,13 +48,13 @@ const AddTripForm = (props) => {
         <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Add Chore</li>
-                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Add Trip</li>
+                    {/* <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li> */}
                 </ol>
             </nav>
             <div className="headerBox">
-                <h3 className='title'>Add a New Chore</h3>
+                <h3 className='title'>Add a New Trip</h3>
             </div>
             <div>
                 <form className='formBox' onSubmit={onSubmitHandler}>
@@ -65,44 +66,38 @@ const AddTripForm = (props) => {
                         }
                     </div>
                     <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Name: </label>
-                        <input type="text"  className="form-control" name="choreName"  value={choreName} onChange={ (e) => setChoreName(e.target.value)}/>
-                        {errors.message ? <p>{errors.message}</p> : null}
+                        <label className="col-sm-2 col-form-label">Location: </label>
+                        <input type="text"  className="form-control" name="location"  value={location} onChange={ (e) => setLocation(e.target.value)}/>
+                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
                     </div>
                     <br></br>
                     <div className="row mb-3">
                         <label className="col-sm-2 col-form-label">Description: </label>
-                        <input type="text" className="form-control" name="choreDescription" value={choreDescription} onChange={ (e) => setChoreDescription(e.target.value)}/>
-                        {errors.message ? <p>{errors.message}</p> : null}
+                        <input type="text" className="form-control" name="description" value={description} onChange={ (e) => setDescription(e.target.value)}/>
+                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
                     </div>
                     <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Location: </label>
-                        <input type="text"   className="form-control" name="choreLocation" value={choreLocation} onChange={ (e) => setChoreLocation(e.target.value)}/>
-                        {errors.message ? <p>{errors.message}</p> : null}
+                        <label className="col-sm-2 col-form-label">Start Date: </label>
+                        <input type="date"   className="form-control" name="startDate" value={startDate} onChange={ (e) => setStartDate(e.target.value)}/>
+                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
                     </div>
                     <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Posted By: </label>
-                        <select name="chorePostedBy"   className="form-control" value={chorePostedBy} onChange={ (e) => setChorePostedBy(e.target.value)}>
-                            <option></option>
-                            <option value="rachel">Rachel</option>
-                            <option value="court">Court</option>
-                        </select>
-                        {errors.message ? <p>{errors.message}</p> : null}
+                        <label className="col-sm-2 col-form-label">End Date: </label>
+                        <input type="date"   className="form-control" name="endDate" value={endDate} onChange={ (e) => setEndDate(e.target.value)}/>
+                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
                     </div>
                     <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Who is Responsible? </label>
-                        <select name="choreResponsibility"   className="form-control" value={choreResponsibility} onChange={ (e) => setChoreResponsibility(e.target.value)}>
-                            <option></option>
-                            <option value="rachel">Rachel</option>
-                            <option value="court">Court</option>
-                            <option value="etta">Etta</option>
-                            <option value="dylan">Dylan</option>
-                            <option value="alice">Alice</option>
-                        </select>
-                        {errors.message ? <p>{errors.message}</p> : null}
+                        <label className="col-sm-2 col-form-label">Rating: </label>
+                        <input type="number"   className="form-control" name="rating" value={rating} onChange={ (e) => setRating(e.target.value)}/>
+                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
                     </div>
+                    {/* <div className="row mb-3">
+                        <label className="col-sm-2 col-form-label">Photos: </label>
+                        <input type="file"   className="form-control" name="photos" value={photos} onChange={ (e) => setPhotos(e.target.value)}/>
+                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                    {/* </div> */} 
                     <br></br>
-                        <Link to={`/dashboard`} style={editStyle}>Cancel</Link>
+                        <Link to={`/`} style={editStyle}>Cancel</Link>
                         <Button input type="submit"  style={buttonStyle}>Add</Button>
                 </form>
             </div>
