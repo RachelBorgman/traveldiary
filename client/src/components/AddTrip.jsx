@@ -25,7 +25,7 @@ const AddTripForm = (props) => {
                 console.log("THIS IS res.data._id: ", res.data._id)
                 setTripList([...tripList, res.data])
                 setTripID(res.data._id)
-                navigate("/")
+                navigate("/travel")
                 // navigate("/trips/" + res.data._id)
                 })
             .catch((err)=> {
@@ -48,7 +48,7 @@ const AddTripForm = (props) => {
             <div>
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
+                        <li className="breadcrumb-item"><Link to={`/travel`}>Dashboard</Link></li>
                         <li className="breadcrumb-item active" aria-current="page">Add Trip</li>
                         {/* <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li> */}
                     </ol>
@@ -97,7 +97,7 @@ const AddTripForm = (props) => {
                             {/* {errors.message ? <p>{errors.message}</p> : null} */}
                         {/* </div> */} 
                         <br></br>
-                            <Link to={`/`} style={editStyle}>Cancel</Link>
+                            <Link to={`/travel`} style={editStyle}>Cancel</Link>
                             <Button input type="submit"  style={buttonStyle}>Add</Button>
                     </form>
                 </div>

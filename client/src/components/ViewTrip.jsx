@@ -24,8 +24,8 @@ const ViewTrip = (props) => {
         <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to={`/travel`}>My Trips</Link></li>
                     <li className="breadcrumb-item active" aria-current="page">View Trip</li>
-                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
                     <li className="breadcrumb-item"><Link to={`/travel/create`}>Add A New Trip</Link></li>
                     {/* <li className="breadcrumb-item"><Link to={`/trips/find`}>Search</Link></li> */}
                 </ol>

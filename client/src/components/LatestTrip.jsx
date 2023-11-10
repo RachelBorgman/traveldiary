@@ -25,21 +25,37 @@ const LatestTrip = (props) => {
     }, [])
 
     return (
-        <div className='tripBox'>
-            <div className='columnOne'>
-                <h2>{tripList[0].location}</h2>
-                <h4>Rating: {tripList[0].rating}/5</h4>
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to={`/travel`}>My Trips</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add A New Trip</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Most Recent Trip</li>
+                </ol>
+            </nav>
+            <h1>My Most Recent Trip</h1>
+            <div className='tripBox'>
+                <div className='columnOne'>
+                    <h2>{tripList[0].location}</h2>
+                    <h4>Rating: {tripList[0].rating}/5</h4>
+                </div>
+                <div className='columnTwo'>
+                    <h5>{new Date(tripList[0].startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(tripList[0].endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
+                    <p>{tripList[0].description}</p>
+                </div>
+                {/* <td>{trip.photos}</td>  */}
+                <div className='columnThree'>
+                    <Link to={`/travel/${tripList[0]._id}`} style={editStyle} >View</Link>
+                    <Link to={`/travel/edit/${tripList[0]._id}`} style={editStyle} >Edit</Link>
+                    <DeleteButton style={buttonStyle} location={tripList[0].location} tripID={tripList[0]._id} successCallback={()=> removeFromDom(tripList[0]._id)}/>
+                    
+                </div>
             </div>
-            <div className='columnTwo'>
-                <h5>{new Date(tripList[0].startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(tripList[0].endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
-                <p>{tripList[0].description}</p>
-            </div>
-            {/* <td>{trip.photos}</td>  */}
-            <div className='columnThree'>
-                <Link to={`/travel/${tripList[0]._id}`} style={editStyle} >View</Link>
-                <Link to={`/travel/edit/${tripList[0]._id}`} style={editStyle} >Edit</Link>
-                <DeleteButton style={buttonStyle} location={tripList[0].location} tripID={tripList[0]._id} successCallback={()=> removeFromDom(tripList[0]._id)}/>
-                
+            <div>
+                <h3>Travel Essentials:</h3>
+                <p>Travel Backpack</p>
+                <p>Passport</p>
+                <p>Headphones</p>
             </div>
         </div>
     )

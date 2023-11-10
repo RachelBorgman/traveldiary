@@ -30,15 +30,15 @@ const TripListAll = (props) => {
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add Trip</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add A Trip</Link></li>
                     {/* <li className="breadcrumb-item"><Link to={`/trips/find`}>Search</Link></li> */}
                 </ol>
             </nav>
             <div className="headerBox">
-            <h2 className='dashTitle'> TRIPS</h2>
+            <h2 className='dashTitle'> MY TRAVEL DIARY</h2>
             <br></br>
                 <Link to={`/travel/create`}><Button style={buttonStyle}>Add a New Trip</Button></Link>
-                {/* <Link to={`/trips/find`}><Button style={buttonStyle}>Search Trips</Button></Link> */}
+                <Link to={`/travel/latest`}><Button style={buttonStyle}>Most Recent Trip</Button></Link>
                 <br></br>
                     <div className="trips">
                         <div className='tripBoxAll'>
@@ -53,7 +53,7 @@ const TripListAll = (props) => {
                                             </div>
                                             <div className='columnTwo'>
                                                 <h5>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
-                                                <p>{trip.description}</p>
+                                                <p>Highlights: {trip.description}</p>
                                             </div>
                                             {/* <td>{trip.photos}</td>  */}
                                             <div className='columnThree'>

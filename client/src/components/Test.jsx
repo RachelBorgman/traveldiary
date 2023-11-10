@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import DeleteButton from './DeleteButton';
-import { Button } from '@mui/material'
 
 const Test = (props) => {
     const {setTripList, tripList, removeFromDom, editStyle, buttonStyle} = props;
@@ -26,49 +25,21 @@ const Test = (props) => {
     }, [])
 
     return (
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add Trip</Link></li>
-                    {/* <li className="breadcrumb-item"><Link to={`/trips/find`}>Search</Link></li> */}
-                </ol>
-            </nav>
-            <div className="headerBox">
-            <h2 className='dashTitle'> TRIPS</h2>
-            <br></br>
-                <Link to={`/travel/create`}><Button style={buttonStyle}>Add a New Trip</Button></Link>
-                {/* <Link to={`/trips/find`}><Button style={buttonStyle}>Search Trips</Button></Link> */}
-                <br></br>
-                    <div className="trips">
-                        <div className='tripBoxAll'>
-                            {
-                                tripList && tripList.map((trip)=>{
-                                return(
-                                    <div key={trip._id}>
-                                        <div className='tripBox'>
-                                            <div className='columnOne'>
-                                                <h2>{trip.location}</h2>
-                                                <h4>Rating: {trip.rating}/5</h4>
-                                            </div>
-                                            <div className='columnTwo'>
-                                                <h5>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
-                                                <p>{trip.description}</p>
-                                            </div>
-                                            {/* <td>{trip.photos}</td>  */}
-                                            <div className='columnThree'>
-                                                <Link to={`/travel/${trip._id}`} style={editStyle} >View</Link>
-                                                <Link to={`/travel/edit/${trip._id}`} style={editStyle} >Edit</Link>
-                                                <DeleteButton style={buttonStyle} location={trip.location} tripID={trip._id} successCallback={()=> removeFromDom(trip._id)}/>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                )})
-                            }
-                            <div>{tripList[0].location}</div>
-                        </div>
-                    </div>
+        <div className='tripBox'>
+            <div className='columnOne'>
+                <h2>{tripList[0].location}</h2>
+                <h4>Rating: {tripList[0].rating}/5</h4>
+            </div>
+            <div className='columnTwo'>
+                <h5>{new Date(tripList[0].startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(tripList[0].endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
+                <p>{tripList[0].description}</p>
+            </div>
+            {/* <td>{trip.photos}</td>  */}
+            <div className='columnThree'>
+                <Link to={`/travel/${tripList[0]._id}`} style={editStyle} >View</Link>
+                <Link to={`/travel/edit/${tripList[0]._id}`} style={editStyle} >Edit</Link>
+                <DeleteButton style={buttonStyle} location={tripList[0].location} tripID={tripList[0]._id} successCallback={()=> removeFromDom(tripList[0]._id)}/>
+                
             </div>
         </div>
     )

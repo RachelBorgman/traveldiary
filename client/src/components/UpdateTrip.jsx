@@ -41,7 +41,7 @@ const UpdateTrip = (props) => {
         axios.patch(`http://localhost:8000/api/travel/${id}`, {location: tripL, description: tripD, startDate: tripSD, endDate: tripED, rating: tripRating}) 
             .then(res => {
                 console.log("this is the put response:", res);
-                navigate("/")
+                navigate("/travel")
             })
             .catch((err) => {
                 console.log(err)
@@ -61,7 +61,7 @@ const UpdateTrip = (props) => {
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item active" aria-current="page">Edit Trip</li>
-                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/travel`}>Dashboard</Link></li>
                     <li className="breadcrumb-item"><Link to={`/travel/create`}>Add Trip</Link></li>
                     {/* <li className="breadcrumb-item"><Link to={`/travel/find`}>Search</Link></li> */}
                 </ol>
@@ -112,7 +112,7 @@ const UpdateTrip = (props) => {
                             <label  className="col-sm-2 col-form-label" htmlFor='photos'>Photos: </label>
                             <input type="text"   className="form-control" name="photos" value={tripPhotos} onChange={ (e) => setTripPhotos(e.target.value)}/>
                         </div> */}
-                        <Link to='/' style={editStyle} >Cancel</Link>
+                        <Link to='/travel' style={editStyle} >Cancel</Link>
                         <Button style={buttonStyle} input type="submit" value="Submit">Update</Button>
                         <DeleteButton location={tripL} tripID={id} successCallback={()=> removeFromDom(id)}/>
                     </form>
