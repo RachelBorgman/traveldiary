@@ -57,7 +57,7 @@ const UpdateTrip = (props) => {
 
 
     return (
-        <div>
+        <div className='updateBG'>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">My Travel Diary</a>
@@ -82,7 +82,8 @@ const UpdateTrip = (props) => {
                     </div>
                 </div>
             </nav>
-            <h3 style={{color:'tomato'}}>Edit Trip: {tripL}</h3>
+            <h3>Editing: </h3>
+            <h2>{tripL}</h2>
             {
             loaded && (
                 <>
@@ -134,6 +135,7 @@ const UpdateTrip = (props) => {
                     </form>
                 </>
             )}
+            <div>Image by <a href="https://www.freepik.com/free-photo/traveler-hiking-mountains-while-having-his-essentials-backpack_18895767.htm#query=travel&position=29&from_view=search&track=sph">Freepik</a></div>
         </div>
     )
 }

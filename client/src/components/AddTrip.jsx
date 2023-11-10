@@ -45,7 +45,7 @@ const AddTripForm = (props) => {
     };
 
     return(
-            <div>
+            <div className='addNew'>
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="/">My Travel Diary</a>
@@ -71,7 +71,7 @@ const AddTripForm = (props) => {
                     </div>
                 </nav>
                 <div className="headerBox">
-                    <h3 className='title'>Add a New Trip</h3>
+                    <h3 className='titleAddNew'>Add a New Trip</h3>
                 </div>
                 <div>
                     <form className='formBox' onSubmit={onSubmitHandler}>
@@ -121,6 +121,7 @@ const AddTripForm = (props) => {
                             <Button input type="submit"  style={buttonStyle}>Add</Button>
                     </form>
                 </div>
+                <div className='picCredit'>Image by <a href="https://www.freepik.com/free-photo/view-world-travel-map-hand-writing-notebook_28478790.htm#query=travel%20diary&position=26&from_view=keyword&track=ais">Freepik</a></div>
             </div>
     )
 };

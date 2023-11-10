@@ -1,3 +1,7 @@
+*{
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Playfair Display', serif;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -69,9 +73,12 @@ button:focus-visible {
   }
 }
 
+/* LatestTrip */
+
 .tripBox{
   border: 2px solid black;
-  width: 1000px;
+  /* width: 1000px; */
+  height: 300px;
   display: flex;
   justify-content: space-between;
   padding: 30px;
@@ -88,13 +95,117 @@ button:focus-visible {
 }
 .columnThree{
   width: 100px;
+  margin: auto;
 }
 .columnThree a, .columnThree button{
   margin:auto;
   display:block
 }
+
+/* Welcome */
+
+.welcome{
+  background-image: url('./assets/img/cartoonBackground.jpg');
+  background-size: contain;
+  width: 1200px;
+  height: 800px;
+}
+
+.container-fluid{
+  margin: 10px;
+  background-color: rgba(228, 237, 239, 0.9);
+  padding: 20px;
+}
+.welcomeNav{
+  margin-bottom: 120px;
+}
+.welcomeTitle{
+  font-size: 72px;
+  margin-bottom: 20px;
+}
+.picCredit{
+  margin-top: 50px;
+}
+
+/* AddNew */
+
+.addNew{
+  background-image: url('./assets/img/addNew.jpg');
+  background-size: contain;
+}
+.titleAddNew{
+  background-color: rgba(228, 237, 239, 0.9);
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 40px;;
+}
 .formBox{
+  background-color: rgba(228, 237, 239, 0.8);
   border: 2px solid gray;
   padding: 30px;
-  margin: 20px;
+  margin-top: 50px;
+  margin-left: 100px;  
+  margin-right: 100px;
+  margin-bottom: 100px;
+}
+
+/* TripList */
+
+.tripListBG{
+  background-image: url('./assets/img/graphicBG.jpg');
+  background-size: contain;
+  padding: 20px;
+}
+.tripBox{
+  background-color: rgba(255, 255, 255, 0.95);
+}
+.dashTitle{
+  font-size: 62px;
+  margin-bottom: 20px;
+  border: 2px solid white;
+  background-color: white;
+}
+
+/* View One */
+
+.viewOneTitle{
+  margin: 30px;
+}
+.viewOneBG{
+  margin: 30px;
+  background-image: url('./assets/img/viewOne.jpg');
+  background-size: contain;
+  padding: 30px;
+}
+.card{
+  margin-left:100px;
+  margin-right: 100px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* update */
+
+.updateBG{
+  margin: 30px;
+  background-image: url('./assets/img/travelerBG.jpg');
+  background-size: contain;
+  padding: 30px;
+}
+
+/* Resources */
+
+.resourcesBG{
+  margin: 30px;
+  background-image: url('./assets/img/jetwingBG.jpg');
+  height: 900px;
+  background-size: contain;
+  padding: 30px;
+}
+.creditBottom{
+  position: absolute;
+  bottom: 10px;
+}
+.resourceTitle{
+  margin: 40px;
 }

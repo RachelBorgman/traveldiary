@@ -26,13 +26,15 @@ function Main() {
 
     const editStyle = {
         margin:'1rem',
-        color: 'blue'
+        color: 'black'
     };
 
     const buttonStyle = {
-        backgroundColor: 'teal',
-        color: 'white',
-        margin: '10px'
+        backgroundColor: 'lightblue',
+        color: 'black',
+        margin: '50px',
+        height: '65px',
+        width: '100px'
     };
 
     useEffect(() => {

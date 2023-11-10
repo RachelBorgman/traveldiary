@@ -25,7 +25,7 @@ const LatestTrip = (props) => {
     }, [])
 
     return (
-        <div>
+        <div className='viewOneBG'>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">My Travel Diary</a>
@@ -67,12 +67,6 @@ const LatestTrip = (props) => {
                     <DeleteButton style={buttonStyle} location={tripList[0].location} tripID={tripList[0]._id} successCallback={()=> removeFromDom(tripList[0]._id)}/>
                     
                 </div>
-            </div>
-            <div>
-                <h3>Travel Essentials:</h3>
-                <p>Travel Backpack</p>
-                <p>Passport</p>
-                <p>Headphones</p>
             </div>
         </div>
     )

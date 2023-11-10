@@ -26,7 +26,7 @@ const TripListAll = (props) => {
     }, [])
 
     return (
-        <div>
+        <div className='tripListBG'>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">My Travel Diary</a>

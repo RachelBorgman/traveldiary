@@ -10,9 +10,9 @@ const Welcome = (props) => {
     // console.log("this is the latestTrip.location", latestTripLocation)
 
     return(
-        <div>
+        <div className='welcome'>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
+                <div class="container-fluid welcomeNav">
                     <a class="navbar-brand" href="/">My Travel Diary</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -34,13 +34,14 @@ const Welcome = (props) => {
             </nav>
             <br></br>
             <div>
-                <h1>My Travel Diary</h1>
+                <h1 className='welcomeTitle'>My Travel Diary</h1>
                 <div>
                     {/* <h2>Latest Trip:{latestTripLocation}</h2> */}
                 </div>
                 <Link to={`/travel`}><Button style={buttonStyle}>My Trips</Button></Link>
             </div>
             <br></br>
+            <div className='picCredit'><a href="https://www.freepik.com/free-vector/watercolor-adventure-background_25708733.htm#page=2&query=travel%20background&position=23&from_view=keyword&track=ais">Image by pikisuperstar</a> on Freepik</div>
         </div>
     );
 }

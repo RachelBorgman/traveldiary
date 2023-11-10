@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Resources = (props) => {
     return(
-        <div>
+        <div className='resourcesBG'>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">My Travel Diary</a>
@@ -25,14 +25,25 @@ const Resources = (props) => {
                     </div>
                 </div>
             </nav>
-            <h1>Travel Resources</h1>
-            <div>
+            <h1 className='resourceTitle'>Travel Resources</h1>
+            <div className='resource card'>
                 <h3>Travel Gear</h3>
                 <a href='https://www.nytimes.com/wirecutter/reviews/travel-guide/'>NY Times</a>
             </div>
-            <div>
+            <div className='resource card'>
                 <h3>Where to Go, When</h3>
                 <a href='https://www.wendyperrin.com/when-to-go-where/'>WendyPerrin</a>
+            </div>
+            <div className='resource card'>
+                <h3>Rate Trip Online</h3>
+                <a href='https://www.tripadvisor.com/'>TripAdvisor</a>
+            </div>
+            <div className='resource card'>
+                <h3>Book Your Next Trip</h3>
+                <a href='https://www.travelocity.com/'>Travelocity</a>
+            </div>
+            <div className='creditBottom'>
+                <div><a href="https://www.freepik.com/free-photo/transport-fly-clouds-jet-flying_1103165.htm#page=2&query=travel&position=4&from_view=search&track=sph">Image by jannoon028</a> on Freepik</div>
             </div>
         </div>
     );
