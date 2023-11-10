@@ -26,25 +26,25 @@ const LatestTrip = (props) => {
 
     return (
         <div className='viewOneBG'>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/">My Travel Diary</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">My Travel Diary</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <Link to={'/travel'} class="nav-link">Home</Link>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link to={'/travel'} className="nav-link">Home</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link to={'/travel/create'} class="nav-link">Add A Trip</Link>
+                            <li className="nav-item">
+                                <Link to={'/travel/create'} className="nav-link">Add A Trip</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link to={'/travel/latest'} class="nav-link active" aria-current="page" >Most Recent Trip</Link>
+                            <li className="nav-item">
+                                <Link to={'/travel/latest'} className="nav-link active" aria-current="page" >Most Recent Trip</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                            <li className="nav-item">
+                                <Link to={'/travel/resources'} className="nav-link">Travel Resources</Link>
                             </li>
                         </ul>
                     </div>

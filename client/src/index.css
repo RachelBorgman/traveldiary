@@ -203,7 +203,7 @@ button:focus-visible {
   padding: 30px;
 }
 .creditBottom{
-  position: absolute;
+  /* position: absolute; */
   bottom: 10px;
 }
 .resourceTitle{
