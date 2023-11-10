@@ -64,7 +64,7 @@ function Main() {
                 <Route element={<TripList buttonStyle={buttonStyle} tripList={tripList} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}/>} path="/travel"/>
                 <Route element={<AddTripForm   buttonStyle={buttonStyle} initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating="" linkStyle={linkStyle} editStyle={editStyle} tripList={tripList} setTripList={setTripList} setErrors={setErrors} errors={errors}/>} path="/travel/create" />
                 <Route element={<ViewTrip buttonStyle={buttonStyle}/>} path="/travel/:id" />
-                <Route element={<UpdateTrip   buttonStyle={buttonStyle} tripList={tripList} linkStyle={linkStyle} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}   initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating=""  />} path="/travel/edit/:id" />
+                <Route element={<UpdateTrip   buttonStyle={buttonStyle} tripList={tripList} linkStyle={linkStyle} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}   initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating="" setErrors={setErrors} errors={errors}/>} path="/travel/edit/:id" />
                 <Route element={<LatestTrip buttonStyle={buttonStyle} tripList={tripList} editStyle={editStyle} removeFromDom={removeFromDom}/>} path="/travel/latest" />
                 <Route element={<Resources />} path="/travel/resources" />
             </Routes>

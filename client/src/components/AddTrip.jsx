@@ -21,8 +21,10 @@ const AddTripForm = (props) => {
         axios.post('http://localhost:8000/api/travel/create', ({location, description, startDate, endDate, rating, photos}))
             .then(res => {
                 console.log("THIS IS RES:", res);
-                console.log(res.data)
+                // console.log(res.data)
                 console.log("THIS IS res.data._id: ", res.data._id)
+                res.data._id = 'undefined' ? console.log('********INVALID TRIP**********')
+                :
                 setTripList([...tripList, res.data])
                 setTripID(res.data._id)
                 navigate("/travel")

@@ -46,11 +46,11 @@ const UpdateTrip = (props) => {
             .catch((err) => {
                 console.log(err)
                 console.log("this is the err.response.data:", err.response.data);
-                // const errorResponse = err.response.data.err.errors;
-                    // const errorArr = [];
-                    //     for (const key of Object.keys(errorResponse)) {
-                    //     errorArr.push(errorResponse[key].message)
-                    // }
+                const errorResponse = err.response.data.err.errors;
+                    const errorArr = [];
+                        for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
                 setErrors(err.response.data);
             })
     }
