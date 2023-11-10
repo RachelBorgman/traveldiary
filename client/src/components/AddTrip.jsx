@@ -21,8 +21,10 @@ const AddTripForm = (props) => {
         axios.post('http://localhost:8000/api/travel/create', ({location, description, startDate, endDate, rating, photos}))
             .then(res => {
                 console.log("THIS IS RES:", res);
-                console.log(res.data)
+                // console.log(res.data)
                 console.log("THIS IS res.data._id: ", res.data._id)
+                res.data._id = 'undefined' ? console.log('********INVALID TRIP**********')
+                :
                 setTripList([...tripList, res.data])
                 setTripID(res.data._id)
                 navigate("/travel")
@@ -31,13 +33,13 @@ const AddTripForm = (props) => {
             .catch((err)=> {
             console.log("this is the err:", err);
             // // console.log("this is the err.message:", err.message);
-            // console.log("this is the err.response:", err.response);
-            // const errorResponse = err.response.data; // Get the errors from err.response.data
-            //         const errorArr = []; // Define a temp error array to push the messages in
-            //         for (const key of Object.keys(errorResponse)) {
-            //             errorArr.push(errorResponse[key].message)
-            //         }
-            // setErrors(errorArr); //or errorResponse ??
+            console.log("this is the err.response:", err.response);
+            const errorResponse = err.response.data; // Get the errors from err.response.data
+                    const errorArr = []; // Define a temp error array to push the messages in
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
+            setErrors(errorArr); //or errorResponse ??
             // // navigate("/")
             })
         
@@ -46,25 +48,25 @@ const AddTripForm = (props) => {
 
     return(
             <div className='addNew'>
-                <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="/">My Travel Diary</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                    <div className="container-fluid">
+                        <a className="navbar-brand" href="/">My Travel Diary</a>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <Link to={'/travel'} class="nav-link" >Home</Link>
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li className="nav-item">
+                                    <Link to={'/travel'} className="nav-link" >Home</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to={'/travel/create'} class="nav-link active" aria-current="page" >Add A Trip</Link>
+                                <li className="nav-item">
+                                    <Link to={'/travel/create'} className="nav-link active" aria-current="page" >Add A Trip</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to={'/travel/latest'} class="nav-link">Most Recent Trip</Link>
+                                <li className="nav-item">
+                                    <Link to={'/travel/latest'} className="nav-link">Most Recent Trip</Link>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                                <li className="nav-item">
+                                    <Link to={'/travel/resources'} className="nav-link">Travel Resources</Link>
                                 </li>
                             </ul>
                         </div>
@@ -86,30 +88,30 @@ const AddTripForm = (props) => {
                             <label className="col-sm-2 col-form-label">Location: </label>
                             <input type="text"  className="form-control" name="location"  value={location} onChange={ (e) => setLocation(e.target.value)}/>
                             <div className='form-text'>Your location must be at least 3 characters</div>
-                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                            {errors.message ? <p>{errors.message}</p> : null}
                         </div>
                         <br></br>
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">Description: </label>
                             <input type="text" className="form-control" name="description" value={description} onChange={ (e) => setDescription(e.target.value)}/>
                             <div className='form-text'>Your description must be at least 3 characters</div>
-                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                            {errors.message ? <p>{errors.message}</p> : null}
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">Start Date: </label>
                             <input type="date"   className="form-control" name="startDate" value={startDate} onChange={ (e) => setStartDate(e.target.value)}/>
-                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                            {errors.message ? <p>{errors.message}</p> : null}
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">End Date: </label>
                             <input type="date"   className="form-control" name="endDate" value={endDate} onChange={ (e) => setEndDate(e.target.value)}/>
-                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                            {errors.message ? <p>{errors.message}</p> : null}
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">Rating: </label>
                             <input type="number"   className="form-control" name="rating" value={rating} onChange={ (e) => setRating(e.target.value)}/>
                             <div className='form-text'>On a scale of 1-5</div>
-                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                            {errors.message ? <p>{errors.message}</p> : null}
                         </div>
                         {/* <div className="row mb-3"> */}
                             {/* <label for="formFile" className="col-sm-2 col-form-label">Photos: </label> */}
