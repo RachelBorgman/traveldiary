@@ -14,7 +14,7 @@ module.exports = {
     createTravel: (req, res) => {
         Travel.create(req.body)
             .then(newlyCreatedTravel => {
-                res.json({ travel: newlyCreatedTravel })
+                res.json(newlyCreatedTravel)
                 })
             .catch((err) => {
                 res.json({ message: 'Something went wrong in create controllers', error: err })
@@ -24,7 +24,7 @@ module.exports = {
     getOne: (req, res) => {
         Travel.findOne({ _id: req.params.id })
         .then(oneSingleTravel => {
-            res.json({ travel: oneSingleTravel })
+            res.json(oneSingleTravel)
         })
         .catch((err) => {
             res.json({ message: 'Something went wrong in find one controllers', error: err })
@@ -46,7 +46,7 @@ module.exports = {
             { _id: req.params.id }, req.body,
         )
         .then(updatedTravel => {
-            res.json({ movie: updatedTravel })
+            res.json(updatedTravel)
         })
         .catch((err) => {
             res.json({ message: 'Something went wrong in update controllers', error: err });

@@ -20,7 +20,7 @@ const travelSchema = new mongoose.Schema({
     photos: [{
         url: {
             type: String,
-            required: true
+            // required: true
         }
     }],
     rating: {
