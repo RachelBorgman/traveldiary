@@ -22,13 +22,29 @@ const ViewTrip = (props) => {
 
     return (
         <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to={`/travel`}>My Trips</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">View Trip</li>
-                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add A New Trip</Link></li>
-                    {/* <li className="breadcrumb-item"><Link to={`/trips/find`}>Search</Link></li> */}
-                </ol>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">My Travel Diary</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <Link to={'/travel'} class="nav-link" >Home</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/create'} class="nav-link">Add A Trip</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/latest'} class="nav-link">Most Recent Trip</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
             <div className='viewBox'>
                 <h1>{oneSingleTravel.location}</h1>

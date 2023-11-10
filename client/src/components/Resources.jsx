@@ -1,14 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Link } from "react-router-dom";
-import { Button } from '@mui/material'
 
-const Welcome = (props) => {
-    const {buttonStyle, tripList} = props;
-
-    // const latestTripLocation = tripList[tripList.length-1].location
-    // console.log(latestTripLocation)
-    // console.log("this is the latestTrip.location", latestTripLocation)
-
+const Resources = (props) => {
     return(
         <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -26,23 +19,23 @@ const Welcome = (props) => {
                                 <Link to={'/travel/create'} class="nav-link">Add A Trip</Link>
                             </li>
                             <li class="nav-item">
-                                <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                                <Link to={'/travel/resources'} class="nav-link active" aria-current="page" >Travel Resources</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <br></br>
+            <h1>Travel Resources</h1>
             <div>
-                <h1>My Travel Diary</h1>
-                <div>
-                    {/* <h2>Latest Trip:{latestTripLocation}</h2> */}
-                </div>
-                <Link to={`/travel`}><Button style={buttonStyle}>My Trips</Button></Link>
+                <h3>Travel Gear</h3>
+                <a href='https://www.nytimes.com/wirecutter/reviews/travel-guide/'>NY Times</a>
             </div>
-            <br></br>
+            <div>
+                <h3>Where to Go, When</h3>
+                <a href='https://www.wendyperrin.com/when-to-go-where/'>WendyPerrin</a>
+            </div>
         </div>
     );
 }
 
-export default Welcome
+export default Resources

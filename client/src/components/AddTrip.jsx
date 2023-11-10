@@ -46,12 +46,29 @@ const AddTripForm = (props) => {
 
     return(
             <div>
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to={`/travel`}>Dashboard</Link></li>
-                        <li className="breadcrumb-item active" aria-current="page">Add Trip</li>
-                        {/* <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li> */}
-                    </ol>
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/">My Travel Diary</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <Link to={'/travel'} class="nav-link" >Home</Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link to={'/travel/create'} class="nav-link active" aria-current="page" >Add A Trip</Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link to={'/travel/latest'} class="nav-link">Most Recent Trip</Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
                 <div className="headerBox">
                     <h3 className='title'>Add a New Trip</h3>
@@ -68,12 +85,14 @@ const AddTripForm = (props) => {
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">Location: </label>
                             <input type="text"  className="form-control" name="location"  value={location} onChange={ (e) => setLocation(e.target.value)}/>
+                            <div className='form-text'>Your location must be at least 3 characters</div>
                             {/* {errors.message ? <p>{errors.message}</p> : null} */}
                         </div>
                         <br></br>
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">Description: </label>
                             <input type="text" className="form-control" name="description" value={description} onChange={ (e) => setDescription(e.target.value)}/>
+                            <div className='form-text'>Your description must be at least 3 characters</div>
                             {/* {errors.message ? <p>{errors.message}</p> : null} */}
                         </div>
                         <div className="row mb-3">
@@ -89,13 +108,14 @@ const AddTripForm = (props) => {
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">Rating: </label>
                             <input type="number"   className="form-control" name="rating" value={rating} onChange={ (e) => setRating(e.target.value)}/>
+                            <div className='form-text'>On a scale of 1-5</div>
                             {/* {errors.message ? <p>{errors.message}</p> : null} */}
                         </div>
-                        {/* <div className="row mb-3">
-                            <label className="col-sm-2 col-form-label">Photos: </label>
-                            <input type="file"   className="form-control" name="photos" value={photos} onChange={ (e) => setPhotos(e.target.value)}/>
+                        {/* <div className="row mb-3"> */}
+                            {/* <label for="formFile" className="col-sm-2 col-form-label">Photos: </label> */}
+                            {/* <input type="file"   className="form-control" name="photos"  id="formFile" value={photos} onChange={ (e) => setPhotos(e.target.value)}/> */}
                             {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                        {/* </div> */} 
+                        {/* </div>  */}
                         <br></br>
                             <Link to={`/travel`} style={editStyle}>Cancel</Link>
                             <Button input type="submit"  style={buttonStyle}>Add</Button>

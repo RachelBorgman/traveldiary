@@ -8,6 +8,7 @@ import ViewTrip from '../components/ViewTrip';
 import UpdateTrip from '../components/UpdateTrip';
 import LatestTrip from '../components/LatestTrip';
 import Welcome from '../components/Welcome';
+import Resources from '../components/Resources';
 import Test from '../components/Test';
 
 
@@ -63,6 +64,7 @@ function Main() {
                 <Route element={<ViewTrip buttonStyle={buttonStyle}/>} path="/travel/:id" />
                 <Route element={<UpdateTrip   buttonStyle={buttonStyle} tripList={tripList} linkStyle={linkStyle} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}   initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating=""  />} path="/travel/edit/:id" />
                 <Route element={<LatestTrip buttonStyle={buttonStyle} tripList={tripList} editStyle={editStyle} removeFromDom={removeFromDom}/>} path="/travel/latest" />
+                <Route element={<Resources />} path="/travel/resources" />
             </Routes>
         </BrowserRouter>
     </div>

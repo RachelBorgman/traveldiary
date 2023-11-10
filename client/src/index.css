@@ -93,3 +93,8 @@ button:focus-visible {
   margin:auto;
   display:block
 }
+.formBox{
+  border: 2px solid gray;
+  padding: 30px;
+  margin: 20px;
+}
