@@ -41,7 +41,7 @@ const UpdateTrip = (props) => {
         axios.patch(`http://localhost:8000/api/travel/${id}`, {location: tripL, description: tripD, startDate: tripSD, endDate: tripED, rating: tripRating}) 
             .then(res => {
                 console.log("this is the put response:", res);
-                navigate("/")
+                navigate("/travel")
             })
             .catch((err) => {
                 console.log(err)
@@ -57,16 +57,33 @@ const UpdateTrip = (props) => {
 
 
     return (
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item active" aria-current="page">Edit Trip</li>
-                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
-                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add Trip</Link></li>
-                    {/* <li className="breadcrumb-item"><Link to={`/travel/find`}>Search</Link></li> */}
-                </ol>
+        <div className='updateBG'>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">My Travel Diary</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <Link to={'/travel'} class="nav-link" >Home</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/create'} class="nav-link">Add A Trip</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/latest'} class="nav-link">Most Recent Trip</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
-            <h3 style={{color:'tomato'}}>Edit Trip: {tripL}</h3>
+            <h3>Editing: </h3>
+            <h2>{tripL}</h2>
             {
             loaded && (
                 <>
@@ -112,12 +129,13 @@ const UpdateTrip = (props) => {
                             <label  className="col-sm-2 col-form-label" htmlFor='photos'>Photos: </label>
                             <input type="text"   className="form-control" name="photos" value={tripPhotos} onChange={ (e) => setTripPhotos(e.target.value)}/>
                         </div> */}
-                        <Link to='/' style={editStyle} >Cancel</Link>
+                        <Link to='/travel' style={editStyle} >Cancel</Link>
                         <Button style={buttonStyle} input type="submit" value="Submit">Update</Button>
                         <DeleteButton location={tripL} tripID={id} successCallback={()=> removeFromDom(id)}/>
                     </form>
                 </>
             )}
+            <div>Image by <a href="https://www.freepik.com/free-photo/traveler-hiking-mountains-while-having-his-essentials-backpack_18895767.htm#query=travel&position=29&from_view=search&track=sph">Freepik</a></div>
         </div>
     )
 }

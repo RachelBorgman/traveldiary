@@ -21,45 +21,54 @@ const ViewTrip = (props) => {
     }, []);
 
     return (
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item active" aria-current="page">View Trip</li>
-                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
-                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add A New Trip</Link></li>
-                    {/* <li className="breadcrumb-item"><Link to={`/trips/find`}>Search</Link></li> */}
-                </ol>
-            </nav>
-            <div className='viewBox'>
-                <h1>{oneSingleTravel.location}</h1>
-                <div>
-                    <h2>{oneSingleTravel.description}</h2>
-                    <div className='viewLabel'>
-                        <h3>Trip Description:</h3>
-                        <p>{oneSingleTravel.description}</p>
+        <div className='viewOne'>
+            <div className='viewOneBG'>
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/">My Travel Diary</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <Link to={'/travel'} class="nav-link" >Home</Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link to={'/travel/create'} class="nav-link">Add A Trip</Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link to={'/travel/latest'} class="nav-link">Most Recent Trip</Link>
+                                </li>
+                                <li class="nav-item">
+                                    <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <h2>{new Date(oneSingleTravel.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h2>
-                    <div className='viewLabel'>
-                        <h3>Trip Start Date:</h3>
-                        <p>{new Date(oneSingleTravel.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
+                </nav>
+                <div className='card viewBox'>
+                    <h1 className='viewOneTitle'>{oneSingleTravel.location}</h1>
+                    {/* <img src="..." class="card-img-top" alt="..."></img> */}
+                    <div>
+                    <h3>{new Date(oneSingleTravel.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(oneSingleTravel.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h3>
+                        <div className='card-body viewLabel'>
+                            <h3>Trip Description:</h3>
+                            <p>{oneSingleTravel.description}</p>
+                        </div>
+                        <h2>{oneSingleTravel.rating}</h2>
+                        <div className='viewLabel'>
+                            <h3>Trip Rating</h3>
+                            {/* <p>{oneSingleTravel.rating}</p> */}
+                        </div>
                     </div>
-                    <h2>{new Date(oneSingleTravel.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h2>
-                    <div className='viewLabel'>
-                        <h3>Trip End Date:</h3>
-                        <p>{new Date(oneSingleTravel.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
-                    </div>
-                    <h2>{oneSingleTravel.rating}</h2>
-                    <div className='viewLabel'>
-                        <h3>Trip Rating:</h3>
-                        <p>{oneSingleTravel.rating}</p>
-                    </div>
+                    {/* <h2>{oneSingleTravel.photos}</h2> */}
+                    {/* <div className='viewLabel'>
+                        <h3>Trip Photos:</h3>
+                        <p>{oneSingleTravel.photos}</p>
+                    </div> */}
+                    <Link to={`/travel/edit/${oneSingleTravel._id}`}><Button style={buttonStyle}>Edit Trip Details</Button></Link>
                 </div>
-                {/* <h2>{oneSingleTravel.photos}</h2> */}
-                {/* <div className='viewLabel'>
-                    <h3>Trip Photos:</h3>
-                    <p>{oneSingleTravel.photos}</p>
-                </div> */}
-                <Link to={`/travel/edit/${oneSingleTravel._id}`}><Button style={buttonStyle}>Edit Trip Details</Button></Link>
             </div>
         </div>
     );

@@ -23,7 +23,7 @@ const DeleteButton = (props) => {
         axios.delete('http://localhost:8000/api/travel/' + tripID)
             .then(res=>{
                 successCallback();
-                navigate("/");
+                navigate("/travel");
             })
     }
     return (

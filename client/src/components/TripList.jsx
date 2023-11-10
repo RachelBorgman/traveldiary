@@ -26,20 +26,33 @@ const TripListAll = (props) => {
     }, [])
 
     return (
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    <li className="breadcrumb-item"><Link to={`/travel/create`}>Add Trip</Link></li>
-                    {/* <li className="breadcrumb-item"><Link to={`/trips/find`}>Search</Link></li> */}
-                </ol>
+        <div className='tripListBG'>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">My Travel Diary</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <Link to={'/travel'} class="nav-link active" aria-current="page" >Home</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/create'} class="nav-link">Add A Trip</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/latest'} class="nav-link">Most Recent Trip</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to={'/travel/resources'} class="nav-link">Travel Resources</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
             <div className="headerBox">
-            <h2 className='dashTitle'> TRIPS</h2>
-            <br></br>
-                <Link to={`/travel/create`}><Button style={buttonStyle}>Add a New Trip</Button></Link>
-                {/* <Link to={`/trips/find`}><Button style={buttonStyle}>Search Trips</Button></Link> */}
-                <br></br>
+            <h2 className='dashTitle'> MY TRAVEL DIARY</h2>
                     <div className="trips">
                         <div className='tripBoxAll'>
                             {
@@ -53,7 +66,7 @@ const TripListAll = (props) => {
                                             </div>
                                             <div className='columnTwo'>
                                                 <h5>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
-                                                <p>{trip.description}</p>
+                                                <p>Highlights: {trip.description}</p>
                                             </div>
                                             {/* <td>{trip.photos}</td>  */}
                                             <div className='columnThree'>
