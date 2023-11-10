@@ -45,63 +45,63 @@ const AddTripForm = (props) => {
     };
 
     return(
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Add Trip</li>
-                    {/* <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li> */}
-                </ol>
-            </nav>
-            <div className="headerBox">
-                <h3 className='title'>Add a New Trip</h3>
-            </div>
             <div>
-                <form className='formBox' onSubmit={onSubmitHandler}>
-                    <div style={{color:"red"}}>
-                        {
-                        errors.map((err, index) => (
-                            <p key={index}>{err}</p>
-                            ))
-                        }
-                    </div>
-                    <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Location: </label>
-                        <input type="text"  className="form-control" name="location"  value={location} onChange={ (e) => setLocation(e.target.value)}/>
-                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                    </div>
-                    <br></br>
-                    <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Description: </label>
-                        <input type="text" className="form-control" name="description" value={description} onChange={ (e) => setDescription(e.target.value)}/>
-                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                    </div>
-                    <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Start Date: </label>
-                        <input type="date"   className="form-control" name="startDate" value={startDate} onChange={ (e) => setStartDate(e.target.value)}/>
-                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                    </div>
-                    <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">End Date: </label>
-                        <input type="date"   className="form-control" name="endDate" value={endDate} onChange={ (e) => setEndDate(e.target.value)}/>
-                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                    </div>
-                    <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Rating: </label>
-                        <input type="number"   className="form-control" name="rating" value={rating} onChange={ (e) => setRating(e.target.value)}/>
-                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                    </div>
-                    {/* <div className="row mb-3">
-                        <label className="col-sm-2 col-form-label">Photos: </label>
-                        <input type="file"   className="form-control" name="photos" value={photos} onChange={ (e) => setPhotos(e.target.value)}/>
-                        {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                    {/* </div> */} 
-                    <br></br>
-                        <Link to={`/`} style={editStyle}>Cancel</Link>
-                        <Button input type="submit"  style={buttonStyle}>Add</Button>
-                </form>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><Link to={`/`}>Dashboard</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page">Add Trip</li>
+                        {/* <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li> */}
+                    </ol>
+                </nav>
+                <div className="headerBox">
+                    <h3 className='title'>Add a New Trip</h3>
+                </div>
+                <div>
+                    <form className='formBox' onSubmit={onSubmitHandler}>
+                        <div style={{color:"red"}}>
+                            {
+                            errors.map((err, index) => (
+                                <p key={index}>{err}</p>
+                                ))
+                            }
+                        </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-2 col-form-label">Location: </label>
+                            <input type="text"  className="form-control" name="location"  value={location} onChange={ (e) => setLocation(e.target.value)}/>
+                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                        </div>
+                        <br></br>
+                        <div className="row mb-3">
+                            <label className="col-sm-2 col-form-label">Description: </label>
+                            <input type="text" className="form-control" name="description" value={description} onChange={ (e) => setDescription(e.target.value)}/>
+                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                        </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-2 col-form-label">Start Date: </label>
+                            <input type="date"   className="form-control" name="startDate" value={startDate} onChange={ (e) => setStartDate(e.target.value)}/>
+                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                        </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-2 col-form-label">End Date: </label>
+                            <input type="date"   className="form-control" name="endDate" value={endDate} onChange={ (e) => setEndDate(e.target.value)}/>
+                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                        </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-2 col-form-label">Rating: </label>
+                            <input type="number"   className="form-control" name="rating" value={rating} onChange={ (e) => setRating(e.target.value)}/>
+                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                        </div>
+                        {/* <div className="row mb-3">
+                            <label className="col-sm-2 col-form-label">Photos: </label>
+                            <input type="file"   className="form-control" name="photos" value={photos} onChange={ (e) => setPhotos(e.target.value)}/>
+                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
+                        {/* </div> */} 
+                        <br></br>
+                            <Link to={`/`} style={editStyle}>Cancel</Link>
+                            <Button input type="submit"  style={buttonStyle}>Add</Button>
+                    </form>
+                </div>
             </div>
-        </div>
     )
 };
 

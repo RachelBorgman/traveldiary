@@ -6,6 +6,8 @@ import TripList from '../components/TripList';
 import AddTripForm from '../components/AddTrip';
 import ViewTrip from '../components/ViewTrip';
 import UpdateTrip from '../components/UpdateTrip';
+// import LatestTrip from '../components/LatestTrip';
+// import Test from '../components/Test';
 
 
 function Main() {
@@ -32,7 +34,7 @@ function Main() {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/travel/all') //assuming this is the route
+        axios.get('http://localhost:8000/api/travel/all')
             .then(res => {
                 setTripList(res.data)
             })
@@ -40,7 +42,7 @@ function Main() {
         }, [])
 
     const removeFromDom = tripID => {
-        axios.delete("http://localhost:8000/api/travel/" + tripID) //assuming this is the route
+        axios.delete("http://localhost:8000/api/travel/" + tripID)
         .then((res)=>{
             console.log(res);
             console.log(res.data);
@@ -58,6 +60,7 @@ function Main() {
                 <Route element={<AddTripForm   buttonStyle={buttonStyle} initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating="" linkStyle={linkStyle} editStyle={editStyle} tripList={tripList} setTripList={setTripList} setErrors={setErrors} errors={errors}/>} path="/travel/create" />
                 <Route element={<ViewTrip buttonStyle={buttonStyle}/>} path="/travel/:id" />
                 <Route element={<UpdateTrip   buttonStyle={buttonStyle} tripList={tripList} linkStyle={linkStyle} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}   initialLocation="" initialDescription=""  initialStartDate=""  initialEndDate="" initialRating=""  />} path="/travel/edit/:id" />
+                {/* <Route element={<Test buttonStyle={buttonStyle} tripList={tripList} editStyle={editStyle} setTripList={setTripList}  removeFromDom={removeFromDom}/>} path="/travel/test" /> */}
             </Routes>
         </BrowserRouter>
     </div>

@@ -40,40 +40,33 @@ const TripListAll = (props) => {
                 <Link to={`/travel/create`}><Button style={buttonStyle}>Add a New Trip</Button></Link>
                 {/* <Link to={`/trips/find`}><Button style={buttonStyle}>Search Trips</Button></Link> */}
                 <br></br>
-                    <div className="table">
-                        <table className='table table-striped table-hover'>
-                            <thead>
-                                <tr>
-                                    <th scope='col'>Trip Location</th>
-                                    <th scope='col'>Trip Description</th>
-                                    <th scope='col'>Start Date:</th>
-                                    <th scope='col'>End Date:</th>
-                                    <th scope='col'>Rating</th>
-                                    {/* <th scope='col'>Photos</th> */}
-                                    <th scope='col'>Actions Available</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <div className="trips">
+                        <div className='tripBoxAll'>
                             {
                                 tripList && tripList.map((trip)=>{
                                 return(
-                                    <tr key={trip._id}>
-                                        <td>{trip.location}</td>
-                                        <td>{trip.description}</td>
-                                        <td>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</td>
-                                        <td>{new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</td>
-                                        <td>{trip.rating}</td> 
-                                        {/* <td>{trip.photos}</td>  */}
-                                        <td>
-                                            <Link to={`/travel/${trip._id}`} style={editStyle} >View</Link>
-                                            <Link to={`/travel/edit/${trip._id}`} style={editStyle} >Edit</Link>
-                                            <DeleteButton style={buttonStyle} location={trip.location} tripID={trip._id} successCallback={()=> removeFromDom(trip._id)}/>
-                                        </td>
-                                    </tr>
+                                    <div key={trip._id}>
+                                        <div className='tripBox'>
+                                            <div className='columnOne'>
+                                                <h2>{trip.location}</h2>
+                                                <h4>Rating: {trip.rating}/5</h4>
+                                            </div>
+                                            <div className='columnTwo'>
+                                                <h5>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
+                                                <p>{trip.description}</p>
+                                            </div>
+                                            {/* <td>{trip.photos}</td>  */}
+                                            <div className='columnThree'>
+                                                <Link to={`/travel/${trip._id}`} style={editStyle} >View</Link>
+                                                <Link to={`/travel/edit/${trip._id}`} style={editStyle} >Edit</Link>
+                                                <DeleteButton style={buttonStyle} location={trip.location} tripID={trip._id} successCallback={()=> removeFromDom(trip._id)}/>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
                                 )})
                             }
-                            </tbody>
-                        </table>
+                        </div>
                     </div>
             </div>
         </div>
