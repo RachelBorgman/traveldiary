@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import DeleteButton from './DeleteButton';
 import { Button } from '@mui/material'
+import StarRating from './StarRating';
 
 const TripListAll = (props) => {
     const {setTripList, tripList, removeFromDom, editStyle, buttonStyle} = props;
@@ -62,7 +63,7 @@ const TripListAll = (props) => {
                                         <div className='tripBox'>
                                             <div className='columnOne'>
                                                 <h2>{trip.location}</h2>
-                                                <h4>Rating: {trip.rating}/5</h4>
+                                                <h4>Rating: <StarRating rating={trip.rating} /> </h4>
                                             </div>
                                             <div className='columnTwo'>
                                                 <h5>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>

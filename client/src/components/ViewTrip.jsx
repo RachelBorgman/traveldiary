@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import {useParams, useNavigate, Link} from "react-router-dom";
 import { Button } from '@mui/material'
+import StarRating from './StarRating'
 
 const ViewTrip = (props) => {
 
@@ -58,8 +59,7 @@ const ViewTrip = (props) => {
                         </div>
                         <h2>{oneSingleTravel.rating}</h2>
                         <div className='viewLabel'>
-                            <h3>Trip Rating</h3>
-                            {/* <p>{oneSingleTravel.rating}</p> */}
+                            <h3>Trip Rating <StarRating rating={oneSingleTravel.rating} /></h3>
                         </div>
                     </div>
                     {/* <h2>{oneSingleTravel.photos}</h2> */}

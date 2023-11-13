@@ -3,19 +3,21 @@ const mongoose = require('mongoose');
 const travelSchema = new mongoose.Schema({
     location: {
         type: String,
-        required: true
+        required: [true, "Location is required"],
+        minlength: [3, "Location must be at least 3 characters long"]
     },
     startDate: {
         type: Date,
-        required: true
+        required: [true, "Start Date is required"]
     },
     endDate: {
         type: Date,
-        required: true
+        required: [true, "End Date is required"]
     },
     description: {
         type: String,
-        required: true
+        required: [true, "Description is required"],
+        minlength: [3, "Description must be at least 3 characters long"],
     },
     photos: [{
         url: {
@@ -25,7 +27,7 @@ const travelSchema = new mongoose.Schema({
     }],
     rating: {
         type: Number,
-        required: true
+        required: [true, "Rating is required"]
     },
 
 }, {timestamps: true});

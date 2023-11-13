@@ -15,9 +15,13 @@ module.exports = {
         Travel.create(req.body)
             .then(newlyCreatedTravel => {
                 res.json(newlyCreatedTravel)
-                })
+            })
             .catch((err) => {
-                res.json({ message: 'Something went wrong in create controllers', error: err })
+                if (err.name === 'ValidationError') {
+                    const errors = Object.values(err.errors).map(e => e.message);
+                    return res.status(400).json({ errors });
+                }
+                res.status(500).json({ message: 'Something went wrong in create controllers', error: err })
             })
     },
 
@@ -48,8 +52,12 @@ module.exports = {
         .then(updatedTravel => {
             res.json(updatedTravel)
         })
-        .catch((err) => {
-            res.json({ message: 'Something went wrong in update controllers', error: err });
+        .catch((err) => {                
+            if (err.name === 'ValidationError') {
+            const errors = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors });
+        }
+        res.status(500).json({ message: 'Something went wrong in update controllers', error: err });
         })
     },
 

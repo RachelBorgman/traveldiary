@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams, Link } from "react-router-dom";
 import DeleteButton from './DeleteButton';
 import { Button } from '@mui/material'
+import StarRating from './StarRating'
 
 const UpdateTrip = (props) => {
     const {removeFromDom, editStyle, buttonStyle} = props;
@@ -122,8 +123,8 @@ const UpdateTrip = (props) => {
                         </div>
                         <br></br>
                         <div>
-                            <label  className="col-sm-2 col-form-label" htmlFor='rating'>Rating: </label>
-                            <input type="number"   className="form-control" name="rating" value={tripRating} onChange={ (e) => setTripRating(e.target.value)}/>
+                            <label className="col-sm-2 col-form-label" htmlFor='rating'>Rating: </label>
+                            <StarRating rating={tripRating} onChange={(value) => setTripRating(value)} />
                         </div>
                         {/* <div>
                             <label  className="col-sm-2 col-form-label" htmlFor='photos'>Photos: </label>

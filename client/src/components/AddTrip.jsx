@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { Button } from '@mui/material'
+import StarRating from './StarRating'
 
 const AddTripForm = (props) => {
     const {setTripList, tripList, initialLocation, initialDescription, initialStartDate, initialEndDate, initialRating, initialPhotos, buttonStyle, editStyle} = props;
@@ -32,7 +33,7 @@ const AddTripForm = (props) => {
                 })
             .catch((err)=> {
             console.log("this is the err:", err);
-            // // console.log("this is the err.message:", err.message);
+            //console.log("this is the err.message:", err.message);
             console.log("this is the err.response:", err.response);
             const errorResponse = err.response.data; // Get the errors from err.response.data
                     const errorArr = []; // Define a temp error array to push the messages in
@@ -40,7 +41,7 @@ const AddTripForm = (props) => {
                         errorArr.push(errorResponse[key].message)
                     }
             setErrors(errorArr); //or errorResponse ??
-            // // navigate("/")
+            // navigate("/")
             })
         
             
@@ -109,8 +110,7 @@ const AddTripForm = (props) => {
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-2 col-form-label">Rating: </label>
-                            <input type="number"   className="form-control" name="rating" value={rating} onChange={ (e) => setRating(e.target.value)}/>
-                            <div className='form-text'>On a scale of 1-5</div>
+                            <StarRating rating={rating} onChange={(value) => setRating(value)} />
                             {errors.message ? <p>{errors.message}</p> : null}
                         </div>
                         {/* <div className="row mb-3"> */}

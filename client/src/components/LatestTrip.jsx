@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import DeleteButton from './DeleteButton';
+import StarRating from './StarRating'
 
 const LatestTrip = (props) => {
     const {setTripList, tripList, removeFromDom, editStyle, buttonStyle} = props;
@@ -54,7 +55,7 @@ const LatestTrip = (props) => {
             <div className='tripBox'>
                 <div className='columnOne'>
                     <h2>{tripList[0].location}</h2>
-                    <h4>Rating: {tripList[0].rating}/5</h4>
+                    <h4>Rating: <StarRating rating={tripList[0].rating} /></h4>
                 </div>
                 <div className='columnTwo'>
                     <h5>{new Date(tripList[0].startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(tripList[0].endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
