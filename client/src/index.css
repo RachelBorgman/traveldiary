@@ -165,6 +165,13 @@ button:focus-visible {
   border: 2px solid white;
   background-color: white;
 }
+.stockPhoto{
+  width: 300px;
+  height: 150px;
+  background-image: url('./assets/travelImgs/traveler.jpg');
+  background-size: contain;
+  margin: auto;
+}
 
 /* View One */
 

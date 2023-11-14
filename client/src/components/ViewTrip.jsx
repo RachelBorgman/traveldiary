@@ -62,11 +62,11 @@ const ViewTrip = (props) => {
                             <h3>Trip Rating <StarRating rating={oneSingleTravel.rating} /></h3>
                         </div>
                     </div>
-                    {/* <h2>{oneSingleTravel.photos}</h2> */}
-                    {/* <div className='viewLabel'>
-                        <h3>Trip Photos:</h3>
+                    <h2>{oneSingleTravel.photos}</h2>
+                    <div className='viewLabel stockPhoto'>
+                        {/* <h3>Trip Photos:</h3> */}
                         <p>{oneSingleTravel.photos}</p>
-                    </div> */}
+                    </div>
                     <Link to={`/travel/edit/${oneSingleTravel._id}`}><Button style={buttonStyle}>Edit Trip Details</Button></Link>
                 </div>
             </div>
