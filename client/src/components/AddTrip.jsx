@@ -22,7 +22,7 @@ const AddTripForm = (props) => {
         axios.post('http://localhost:8000/api/travel/create', ({location, description, startDate, endDate, rating}))
             .then(res => {
                 console.log("THIS IS RES:", res);
-                // console.log(res.data)
+                console.log(res.data)
                 console.log("THIS IS res.data._id: ", res.data._id)
                 res.data._id = 'undefined' ? console.log('********INVALID TRIP**********')
                 :
@@ -34,8 +34,8 @@ const AddTripForm = (props) => {
             .catch((err)=> {
             console.log("this is the err:", err);
             //console.log("this is the err.message:", err.message);
-            console.log("this is the err.response.data.errors:", err.response.data.errors);
-            const errorResponse = err.response.data.errors; // Get the errors from err.response.data
+            console.log("this is the err.response.data.err:", err.response.data.err);
+            const errorResponse = err.response.data.err.errors; // Get the errors from err.response.data
                     const errorArr = []; // Define a temp error array to push the messages in
                     for (const key of Object.keys(errorResponse)) {
                         errorArr.push(errorResponse[key].message)
