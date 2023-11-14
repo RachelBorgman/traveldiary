@@ -11,7 +11,7 @@ const AddTripForm = (props) => {
     const [startDate, setStartDate] = useState(initialStartDate);
     const [endDate, setEndDate] = useState(initialEndDate);
     const [rating, setRating] = useState(initialRating);
-    const [photos, setPhotos] = useState(initialPhotos);
+    // const [photos, setPhotos] = useState(initialPhotos);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const {id} = useParams(); 
@@ -19,10 +19,10 @@ const AddTripForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/travel/create', ({location, description, startDate, endDate, rating, photos}))
+        axios.post('http://localhost:8000/api/travel/create', ({location, description, startDate, endDate, rating}))
             .then(res => {
                 console.log("THIS IS RES:", res);
-                // console.log(res.data)
+                console.log(res.data)
                 console.log("THIS IS res.data._id: ", res.data._id)
                 res.data._id = 'undefined' ? console.log('********INVALID TRIP**********')
                 :
@@ -34,12 +34,13 @@ const AddTripForm = (props) => {
             .catch((err)=> {
             console.log("this is the err:", err);
             //console.log("this is the err.message:", err.message);
-            console.log("this is the err.response:", err.response);
-            const errorResponse = err.response.data; // Get the errors from err.response.data
+            console.log("this is the err.response.data.err:", err.response.data.err);
+            const errorResponse = err.response.data.err.errors; // Get the errors from err.response.data
                     const errorArr = []; // Define a temp error array to push the messages in
                     for (const key of Object.keys(errorResponse)) {
                         errorArr.push(errorResponse[key].message)
                     }
+                    console.log(errorArr)
             setErrors(errorArr); //or errorResponse ??
             // navigate("/")
             })
@@ -113,11 +114,11 @@ const AddTripForm = (props) => {
                             <StarRating rating={rating} onChange={(value) => setRating(value)} />
                             {errors.message ? <p>{errors.message}</p> : null}
                         </div>
-                        <div className="row mb-3">
-                            <label for="formFile" className="col-sm-2 col-form-label">Photos: </label>
+                        {/* <div className="row mb-3">
+                            <label htmlFor="formFile" className="col-sm-2 col-form-label">Photos: </label>
                             <input type="file"   className="form-control" name="photos"  id="formFile" value={photos} onChange={ (e) => setPhotos(e.target.value)}/>
                             {errors.message ? <p>{errors.message}</p> : null}
-                        </div> 
+                        </div>  */}
                         <br></br>
                             <Link to={`/travel`} style={editStyle}>Cancel</Link>
                             <Button input type="submit"  style={buttonStyle}>Add</Button>

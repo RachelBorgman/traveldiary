@@ -17,21 +17,26 @@ module.exports = {
                 res.json(newlyCreatedTravel)
             })
             .catch((err) => {
-                if (err.name === 'ValidationError') {
-                    const errors = Object.values(err.errors).map(e => e.message);
-                    return res.status(400).json({ errors });
-                }
-                res.status(500).json({ message: 'Something went wrong in create controllers', error: err })
+                res.status(400).json({ err });
             })
+            // .catch((err) => {
+            //     if (err.name === 'ValidationError') {
+            //         const errors = Object.values(err.errors).map(e => e.message);
+            //         return res.status(400).json({ errors });
+            //     }
+            //     res.status(500).json({ message: 'Something went wrong in create controllers', error: err })
+            // })
     },
 
     getOne: (req, res) => {
-        Travel.findOne({ _id: req.params.id })
+        Travel.findOne({ _id: req.params.id },
+            req.body,
+            { new: true, runValidators: true })
         .then(oneSingleTravel => {
             res.json(oneSingleTravel)
         })
         .catch((err) => {
-            res.json({ message: 'Something went wrong in find one controllers', error: err })
+            res.status(400).json({ message: 'Something went wrong in find one controllers', err })
         })
     },
 
@@ -47,18 +52,31 @@ module.exports = {
 
     update: (req, res) => {
         Travel.findOneAndUpdate(
-            { _id: req.params.id }, req.body,
-        )
+            { _id: req.params.id },
+        req.body,
+        { new: true, runValidators: true }
+    )
         .then(updatedTravel => {
+            console.log("THIS IS UPDATED travel BEFORE RES.JSON: ", updatedTravel)
             res.json(updatedTravel)
+            console.log("THIS IS UPDATED travel AFTER RES.JSON: ", updatedTravel)
         })
-        .catch((err) => {                
-            if (err.name === 'ValidationError') {
-            const errors = Object.values(err.errors).map(e => e.message);
-            return res.status(400).json({ errors });
-        }
-        res.status(500).json({ message: 'Something went wrong in update controllers', error: err });
+        .catch((err) => {
+            res.status(400).json({ err });
         })
-    },
+    }
+    //         { _id: req.params.id }, req.body,
+    //     )
+    //     .then(updatedTravel => {
+    //         res.json(updatedTravel)
+    //     })
+    //     .catch((err) => {                
+    //         if (err.name === 'ValidationError') {
+    //         const errors = Object.values(err.errors).map(e => e.message);
+    //         return res.status(400).json({ errors });
+    //     }
+    //     res.status(500).json({ message: 'Something went wrong in update controllers', error: err });
+    //     })
+    // },
 
 }
