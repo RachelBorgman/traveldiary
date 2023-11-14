@@ -113,11 +113,11 @@ const AddTripForm = (props) => {
                             <StarRating rating={rating} onChange={(value) => setRating(value)} />
                             {errors.message ? <p>{errors.message}</p> : null}
                         </div>
-                        {/* <div className="row mb-3"> */}
-                            {/* <label for="formFile" className="col-sm-2 col-form-label">Photos: </label> */}
-                            {/* <input type="file"   className="form-control" name="photos"  id="formFile" value={photos} onChange={ (e) => setPhotos(e.target.value)}/> */}
-                            {/* {errors.message ? <p>{errors.message}</p> : null} */}
-                        {/* </div>  */}
+                        <div className="row mb-3">
+                            <label for="formFile" className="col-sm-2 col-form-label">Photos: </label>
+                            <input type="file"   className="form-control" name="photos"  id="formFile" value={photos} onChange={ (e) => setPhotos(e.target.value)}/>
+                            {errors.message ? <p>{errors.message}</p> : null}
+                        </div> 
                         <br></br>
                             <Link to={`/travel`} style={editStyle}>Cancel</Link>
                             <Button input type="submit"  style={buttonStyle}>Add</Button>

@@ -69,7 +69,8 @@ const TripListAll = (props) => {
                                                 <h5>{new Date(trip.startDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})} - {new Date(trip.endDate).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</h5>
                                                 <p>Highlights: {trip.description}</p>
                                             </div>
-                                            {/* <td>{trip.photos}</td>  */}
+                                            <td>{trip.photos}</td> 
+                                            <div className="stockPhoto"></div>
                                             <div className='columnThree'>
                                                 <Link to={`/travel/${trip._id}`} style={editStyle} >View</Link>
                                                 <Link to={`/travel/edit/${trip._id}`} style={editStyle} >Edit</Link>
