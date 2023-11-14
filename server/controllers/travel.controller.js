@@ -14,7 +14,7 @@ module.exports = {
     createTravel: (req, res) => {
         Travel.create(req.body)
             .then(newlyCreatedTravel => {
-                res.status(400).json(newlyCreatedTravel)
+                res.json(newlyCreatedTravel)
             })
             .catch((err) => {
                 res.status(400).json({ err });
